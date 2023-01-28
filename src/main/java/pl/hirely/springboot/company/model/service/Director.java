@@ -3,11 +3,14 @@ package pl.hirely.springboot.company.model.service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Director extends BaseEmployee{
+public class Director extends BaseEmployee {
     @Override
     public BigDecimal calculateSalary() {
-        int experience = LocalDate.now().getYear() - getEmploymentDate().getYear();
-        return getBaseSalary().multiply(BigDecimal.valueOf(0.1 * experience));
+        return getBaseSalary().add(calculateBonus());
+    }
+    private BigDecimal calculateBonus (){
+        return getBaseSalary().multiply(BigDecimal.valueOf(0.1).multiply(BigDecimal.valueOf(getExperience())));
+
     }
 
     public Director(BigDecimal baseSalary, LocalDate employmentDate) {

@@ -2,6 +2,7 @@ package pl.hirely.springboot.company.model.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 
 public abstract class BaseEmployee {
 
@@ -30,4 +31,7 @@ public abstract class BaseEmployee {
     }
 
     public abstract BigDecimal calculateSalary ();
+    public int getExperience (){
+        return Period.between(employmentDate, LocalDate.now()).getYears();
+    }
 }

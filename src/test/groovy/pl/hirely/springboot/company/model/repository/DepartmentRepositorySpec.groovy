@@ -19,5 +19,7 @@ class DepartmentRepositorySpec extends Specification {
         then:
         actual.size() == 2
         actual*.name as Set == ['developers', 'managers'] as Set
+        actual.find(department->department.name.equals("developers"))
+                .getEmployees()*.fullName as Set == ['Roman Romanowski', 'Tomasz Tomaszewski'] as Set
     }
 }
