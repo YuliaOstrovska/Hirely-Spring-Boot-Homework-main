@@ -18,9 +18,10 @@ public class CompanyController {
     @Autowired
     public CompanyController(CompanyService companyService,
                              DepartmentRepository departmentRepository) {
-      this.companyService = companyService;
+        this.companyService = companyService;
         this.departmentRepository = departmentRepository;
     }
+
     @RequestMapping(method = RequestMethod.POST)
     public DepartmentDto addDepartment(@RequestBody DepartmentDto departmentDto) {
         return companyService.addDepartment(departmentDto);
